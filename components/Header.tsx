@@ -1,6 +1,7 @@
 import React from 'react'
 import Logo from "../components/Logo"
 import DarkModeToggle from './DarkModeToggle'
+import UserButton from './UserButton'
 
 function Header() {
   return (
@@ -11,8 +12,8 @@ function Header() {
         <div className='flex-1 flex items-center justify-end space-x-4'>
           {/* session */}
           {/* language */}
-          <DarkModeToggle></DarkModeToggle>
-          {/* icon */}
+          <DarkModeToggle />
+          <UserButton />
         </div>
       </nav>
       {/* upgrade banner */}
