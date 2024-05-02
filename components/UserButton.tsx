@@ -11,7 +11,9 @@ import UserAvatar from "./UserAvatar"
 function UserButton() {
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger><UserAvatar /></DropdownMenuTrigger>
+      <DropdownMenuTrigger>
+        <UserAvatar name="Bharat Rathor" image="https://github.com/shadcn.png"/>
+      </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuLabel>Welcome Bharat Rathor!</DropdownMenuLabel>
         <DropdownMenuSeparator />
