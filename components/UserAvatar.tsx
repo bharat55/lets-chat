@@ -4,7 +4,7 @@ import Image from "next/image"
 
 
 function UserAvatar(
-  {name, image, className}: { name: string, image: string, className?: string}
+  {name, image, className}: { name?: string | null, image?: string | null, className?: string | null}
 ) {
   return (
     <Avatar className={cn("bg-white text-black", className)}>
@@ -21,7 +21,7 @@ function UserAvatar(
       }
       <AvatarFallback delayMs={1000} className="dark:bg-white dark:text-black">
        {
-        name.split(" ").map((a) => a[0]).join("")
+        name?.split(" ").map((a) => a[0]).join("")
        }
       </AvatarFallback>
     </Avatar>

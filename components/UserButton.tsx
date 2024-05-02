@@ -9,7 +9,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import UserAvatar from "./UserAvatar"
-import { Session } from "inspector"
+import { Session } from "next-auth"
 import { Button } from "./ui/button"
 import { signIn, signOut } from "next-auth/react"
 
@@ -22,14 +22,17 @@ function UserButton({
      <Button variant={"outline"} onClick={() => signIn()}>Sign In</Button>
     )
   }
+
+  console.log(session);
+
     
-  return (
+  return session &&  (
     <DropdownMenu>
       <DropdownMenuTrigger>
-        <UserAvatar name="Bharat Rathor" image="https://github.com/shadcn.png"/>
+        <UserAvatar name={session.user?.name} image={session.user?.image}/>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        <DropdownMenuLabel>Welcome Bharat Rathor!</DropdownMenuLabel>
+        <DropdownMenuLabel>{session.user?.name}</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={()=> signOut()}>Sign Out</DropdownMenuItem>
       </DropdownMenuContent>
