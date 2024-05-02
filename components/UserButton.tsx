@@ -1,3 +1,5 @@
+"use client"
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -7,8 +9,20 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import UserAvatar from "./UserAvatar"
+import { Session } from "inspector"
+import { Button } from "./ui/button"
+import { signIn, signOut } from "next-auth/react"
 
-function UserButton() {
+function UserButton({
+  session,
+}: {session: Session | null }) {
+
+  if (!session){
+    return (
+     <Button variant={"outline"} onClick={() => signIn()}>Sign In</Button>
+    )
+  }
+    
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
@@ -17,7 +31,7 @@ function UserButton() {
       <DropdownMenuContent>
         <DropdownMenuLabel>Welcome Bharat Rathor!</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>Sign Out</DropdownMenuItem>
+        <DropdownMenuItem onClick={()=> signOut()}>Sign Out</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   )
